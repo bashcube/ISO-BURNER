@@ -17,4 +17,4 @@
     Then it detects the pendrive and burns the image in the USB-Drive.
     
   * ## Output:
-    ![Screenshot of script running on my machine.](https://github.com/bashcube/ISO-BURNER/Screenshot.png)
+    ![Screenshot of script running on my machine.](Screenshot.png)
