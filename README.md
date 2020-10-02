@@ -1,17 +1,17 @@
 #ISO-BURNER
 
   * ## Usage:
-   Clone the repo in your local machine using:
-   ```bash
-   $ git clone https://github.com/bashcube/ISO-BURNER.git
-   ```
+    Clone the repo in your local machine using:
+    ```bash
+    $ git clone https://github.com/bashcube/ISO-BURNER.git
+    ```
    
-   Move into the directory and execute the bash file with sudo privileges:
-   ```bash
-   $ sudo su
-   $ cd ISO_BURNER
-   $ bash burner.sh
-   ```
+    Move into the directory and execute the bash file with sudo privileges:
+    ```bash
+    $ sudo su
+    $ cd ISO_BURNER
+    $ bash burner.sh
+    ```
    
   * ## Description:
     The following script automates the process of creating a bootable
