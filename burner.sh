@@ -23,7 +23,7 @@ then
    done < "$input"
    rm -rf urls.txt
    rm -rf source.html
- echo "DOWNLOADING FEDORA ISO...................."
+ echo "DOWNLOADING FEDORA ISO..."
  echo
  wget $URL
  ISO_PATH="$(ls | grep 'Fedora')"
@@ -34,36 +34,36 @@ then
 }
 
 chk_usb() {
-echo "Detecting USB DRIVE...................."
+echo "Detecting USB DRIVE..."
 CHK="$(ls /dev/sd* | awk '{print $1}' | awk 'NR==1 {first = $0} END {print;}')"
-echo "Found USB DRIVE...................."$CHK
+echo "Found USB DRIVE..."$CHK
 USB=$CHK
 }
 
 chk_sum(){
-echo "CREATING CHECKSUM...................."
+echo "CREATING CHECKSUM..."
 sha256sum $ISO_PATH > chksum.txt
-echo "VERIFYING CHECKSUM...................."
+echo "VERIFYING CHECKSUM..."
 if [[ "$(sha256sum --check test.txt)" == *OK ]]
 then
-  echo "CHECKSUM VERIFIED...................."
-  echo "THE SCRIPT CAN CONTINUE...................."
+  echo "CHECKSUM VERIFIED..."
+  echo "THE SCRIPT CAN CONTINUE..."
   rm -rf chksum.txt
 else
-  echo "COULD NOT VERIFY THE CHECKSUM...................."
-  echo "EXITING NOW...................."
+  echo "COULD NOT VERIFY THE CHECKSUM..."
+  echo "EXITING NOW..."
   rm -rf chksum.txt
   exit
 fi
 }
 
 burn_usb() {
-echo "BURNING THE ISO TO THE USB DRIVE...................."
+echo "BURNING THE ISO TO THE USB DRIVE..."
 dd bs=4M if=$ISO_PATH of=$USB status=progress oflag=sync
 }
 
 copy_iso() {
-echo "FORMATTING USB_DRIVE...................."
+echo "FORMATTING USB_DRIVE...."
 DRIVE="$(echo $USB | cut -c1-8 )"
 echo $DRIVE
 mkfs.fat -F32 -I $DRIVE
@@ -72,7 +72,7 @@ NAME="$(ls /media/$USER/)"
 }
 
 umount_usb() {
-echo "UMOUNTING DISK...................."
+echo "UMOUNTING DISK..."
 umount $USB
 }
 
@@ -88,16 +88,16 @@ echo
 menu() {
  clear
   banner
-  echo "CHOOSE FROM THE LIST GIVEN: "
-  echo "1.FEDORA"
-  echo "2.KDE-PLASMA FEDORA"
-  echo "3.XFCE FEDORA"
-  echo "4.LXQT FEDORA"
-  echo "5.MATE-COMPIZ FEDORA"
-  echo "6.CINNAMON FEDORA"
-  echo "7.LXDE FEDORA"
-  echo "8.SOAS FEDORA"
-  read -p "ENTER CHOICE: " CHOICE
+  echo "Choose Distro: "
+  echo "1.Fedora"
+  echo "2.KDE-Plasma Fedora"
+  echo "3.XFCE Fedora"
+  echo "4.LXQT Fedora"
+  echo "5.MATE-Compliz Fedora"
+  echo "6.Cinnamon Fedora"
+  echo "7.LXDE Fedora"
+  echo "8.SOAS Fedora"
+  read -p ">>> " CHOICE
   if [ "$CHOICE" = "1" ]
   then
     ISO_URL=' https://getfedora.org/en/workstation/download/'
